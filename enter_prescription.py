@@ -42,7 +42,7 @@ class OpenEMRWorkflow:
         # Enter "enter prescription page"
         iframe = self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div[3]/div/div[4]/iframe')))
         self.driver.switch_to.frame(iframe)
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[2]/div/section[6]/div/h6/span/a'))).click()
+        self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div[2]/div/section[5]/div/h6/span/a'))).click()
         self.driver.switch_to.default_content()
 
     def click_add_prescription(self):
@@ -243,7 +243,7 @@ workflow.run_setup()
 # correct workflow:
 # 16 actions
 # click_provider;select_billy;click_drug;enter_drug_namep1;enter_drug_namep2;click_quantity;enter_quantity;enter_medicine_num;choose_medicine_unit;enter_direction_num;choose_direction_s1;choose_direction_s2;choose_direction_s3;choose_refill_num1;add_to_medicine;save
-'''workflow.run_workflow([
+workflow.run_workflow([
     'click_provider',
     'select_billy',
     'click_drug',
@@ -260,6 +260,6 @@ workflow.run_setup()
     'choose_refill_num1',
     'add_to_medicine',
     'save'
-])'''
+])
 # Example: Omission1[2]
-workflow.run_workflow(['click_provider', 'click_drug', 'enter_drug_namep1', 'enter_drug_namep2', 'click_quantity', 'enter_quantity', 'enter_medicine_num', 'choose_medicine_unit', 'enter_direction_num', 'choose_direction_s1', 'choose_direction_s2', 'choose_direction_s3', 'choose_refill_num1', 'add_to_medicine', 'save'])
+#workflow.run_workflow(['click_provider', 'click_drug', 'enter_drug_namep1', 'enter_drug_namep2', 'click_quantity', 'enter_quantity', 'enter_medicine_num', 'choose_medicine_unit', 'enter_direction_num', 'choose_direction_s1', 'choose_direction_s2', 'choose_direction_s3', 'choose_refill_num1', 'add_to_medicine', 'save'])
