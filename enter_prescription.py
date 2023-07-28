@@ -235,25 +235,31 @@ class OpenEMRWorkflow:
     def run_workflow(self, workflow):
         # Call deviated workflows
         for step in workflow:
-            step()
+            # use getattr to get the method from string, call the method
+            getattr(self, step)()
 
 workflow = OpenEMRWorkflow()
 workflow.run_setup()
-workflow.run_workflow([
-    workflow.click_provider,
-    workflow.select_billy,
-    workflow.click_drug,
-    workflow.enter_drug_namep1,
-    workflow.enter_drug_namep2,
-    workflow.click_quantity,
-    workflow.enter_quantity,
-    workflow.enter_medicine_num,
-    workflow.choose_medicine_unit,
-    workflow.enter_direction_num,
-    workflow.choose_direction_s1,
-    workflow.choose_direction_s2,
-    workflow.choose_direction_s3,
-    workflow.choose_refill_num1,
-    workflow.add_to_medicine,
-    workflow.save
-])
+# correct workflow:
+# 16 actions
+# click_provider;select_billy;click_drug;enter_drug_namep1;enter_drug_namep2;click_quantity;enter_quantity;enter_medicine_num;choose_medicine_unit;enter_direction_num;choose_direction_s1;choose_direction_s2;choose_direction_s3;choose_refill_num1;add_to_medicine;save
+'''workflow.run_workflow([
+    'click_provider',
+    'select_billy',
+    'click_drug',
+    'enter_drug_namep1',
+    'enter_drug_namep2',
+    'click_quantity',
+    'enter_quantity',
+    'enter_medicine_num',
+    'choose_medicine_unit',
+    'enter_direction_num',
+    'choose_direction_s1',
+    'choose_direction_s2',
+    'choose_direction_s3',
+    'choose_refill_num1',
+    'add_to_medicine',
+    'save'
+])'''
+# Example: Omission1[2]
+workflow.run_workflow(['click_provider', 'click_drug', 'enter_drug_namep1', 'enter_drug_namep2', 'click_quantity', 'enter_quantity', 'enter_medicine_num', 'choose_medicine_unit', 'enter_direction_num', 'choose_direction_s1', 'choose_direction_s2', 'choose_direction_s3', 'choose_refill_num1', 'add_to_medicine', 'save'])
